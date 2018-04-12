@@ -33,11 +33,12 @@ public class UsuarioService {
 
 	public Optional<String> loga(Usuario usuario) {
 		Optional<String> generateHash = null;
-		Usuario prepararUsuario = UsuarioUtil.prepararUsuario(usuario);
-		prepararUsuario.setUltimoAcesso(LocalDate.now());
-		if(prepararUsuario.isEstado()) {
-			usuarioRepository.save(prepararUsuario);
-			generateHash = TokenGenerator.generateHash(prepararUsuario);
+		Usuario usuarioPreparado = UsuarioUtil.prepararUsuario(usuario);
+		usuarioPreparado.setUltimoAcesso(LocalDate.now());
+		//se o usuario foi ativado, mudando o seu estado
+		if(usuarioPreparado.isEstado()) {
+			usuarioRepository.save(usuarioPreparado);
+			generateHash = TokenGenerator.generateHash(usuarioPreparado);
 		}
 		return generateHash;
 	}
