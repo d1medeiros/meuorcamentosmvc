@@ -15,6 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.dmedeiros.meuorcamentosmvc.conta.modelo.Carteira;
+import com.dmedeiros.meuorcamentosmvc.usuario.exception.UsuarioException;
 
 @Entity
 @XmlRootElement(name="usuario")
@@ -79,6 +80,15 @@ public class Usuario {
 		this.ultimoAcesso = ultimoAcesso;
 	}
 	
+	public Usuario usuarioIsNotEmpty () throws UsuarioException {
+		if (getNome() == null && getLogin() == null && getSenha() == null) {
+			throw new UsuarioException("Usuario vazio");
+		}
+		
+		return this;
+	}
+	
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
