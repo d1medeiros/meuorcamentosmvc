@@ -1,6 +1,10 @@
 package com.dmedeiros.meuorcamentosmvc.conta.servico;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,6 +66,26 @@ public class ContaService {
             Usuario usuarioValido = usuarioService.valida(token);
             Carteira carteira = getCarteira(usuarioValido);
             salvaContaNormalOuParaUmAno(conta, anoVigente, carteira);
+
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (UsuarioException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void remover(Conta conta, String token) {
+        try {
+            
+            System.out.println(conta);
+            Usuario usuarioValido = usuarioService.valida(token);
+            Conta contaRemocao = usuarioValido.getCarteira().getContas()
+                    .stream().peek(c -> c.equals(conta)).filter(c -> c.equals(conta)).findFirst().get();
+            System.out.println(contaRemocao);
+            contaRepository.delete(contaRemocao);
 
         } catch (IllegalArgumentException e) {
             e.printStackTrace();

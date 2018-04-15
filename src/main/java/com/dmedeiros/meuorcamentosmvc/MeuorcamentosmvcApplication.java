@@ -48,6 +48,8 @@ public class MeuorcamentosmvcApplication {
                 c.inserir(c2, token);
                 c.inserir(c3, token);
                 c.inserir(c4, token);
+                
+                c.remover(c1, token);
 
             }
 

@@ -95,48 +95,50 @@ public class Conta {
 	public String toString() {
 		return String.format("ID: %d Nome: %s", this.id, this.nome);
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((chaveGrupoContas == null) ? 0 : chaveGrupoContas.hashCode());
-		result = prime * result + ((dataPagamento == null) ? 0 : dataPagamento.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Conta other = (Conta) obj;
-		if (chaveGrupoContas == null) {
-			if (other.chaveGrupoContas != null)
-				return false;
-		} else if (!chaveGrupoContas.equals(other.chaveGrupoContas))
-			return false;
-		if (dataPagamento == null) {
-			if (other.dataPagamento != null)
-				return false;
-		} else if (!dataPagamento.equals(other.dataPagamento))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		return true;
-	}
-	
-	
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((chaveGrupoContas == null) ? 0 : chaveGrupoContas.hashCode());
+        result = prime * result + ((dataPagamento == null) ? 0 : dataPagamento.hashCode());
+        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+        result = prime * result + ((tipoConta == null) ? 0 : tipoConta.hashCode());
+        result = prime * result + ((valor == null) ? 0 : valor.hashCode());
+        return result;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Conta other = (Conta) obj;
+        if (chaveGrupoContas == null) {
+            if (other.chaveGrupoContas != null)
+                return false;
+        } else if (!chaveGrupoContas.equals(other.chaveGrupoContas))
+            return false;
+        if (dataPagamento == null) {
+            if (other.dataPagamento != null)
+                return false;
+        } else if (!dataPagamento.equals(other.dataPagamento))
+            return false;
+        if (nome == null) {
+            if (other.nome != null)
+                return false;
+        } else if (!nome.equals(other.nome))
+            return false;
+        if (tipoConta != other.tipoConta)
+            return false;
+        if (valor == null) {
+            if (other.valor != null)
+                return false;
+        } else if (!valor.equals(other.valor))
+            return false;
+        return true;
+    }
+
 	
 }
