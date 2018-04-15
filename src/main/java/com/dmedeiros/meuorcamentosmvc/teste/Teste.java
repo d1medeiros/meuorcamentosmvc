@@ -3,17 +3,34 @@ package com.dmedeiros.meuorcamentosmvc.teste;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import com.dmedeiros.meuorcamentosmvc.conta.modelo.Carteira;
+import com.dmedeiros.meuorcamentosmvc.usuario.exception.UsuarioException;
+import com.dmedeiros.meuorcamentosmvc.usuario.modelo.Usuario;
+
 public class Teste {
 
 	public static void main(String[] args) {
-//		boolean allNotNull = isAllNotNull("aaa", "adsfa");
-//		boolean allNotNull = isAllNotNull("", "adsfa");
-//		boolean allNotNull = isAllNotNull(null, "adsfa");
-		isAllNotNull2(1, null, null);
-		isAllNotNull2(2, null, "adsfa");
-		isAllNotNull2(3, "ds", "adsfa");
-		isAllNotNull2(4, "", "adsfa");
-//		System.out.println(allNotNull);
+
+		
+		Carteira carteira = new Carteira();
+		
+		Usuario usuario = new Usuario();
+		usuario.setNome("diego medeiros");
+		usuario.setLogin("diego");
+		usuario.setSenha("12345");
+		usuario.setCarteira(carteira);
+//		usuario = null;
+//		usuario = new Usuario();
+		
+		try {
+			Usuario usuarioIsNotEmpty = Optional.ofNullable(usuario).get().usuarioIsNotEmpty();
+		} catch (UsuarioException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
 	}
 	
 
@@ -29,3 +46,4 @@ public class Teste {
 
 	
 }
+

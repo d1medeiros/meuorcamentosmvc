@@ -76,6 +76,21 @@ public class Conta {
         this.chaveGrupoContas = chaveGrupoContas; 
     } 
 	
+	public static Conta geraContasParaDozeMeses(int plusMonth, Conta conta) {
+		
+		System.out.println("geraContasParaDozeMeses: " + plusMonth);
+		
+		Conta contaFutura = new Conta();
+		contaFutura.setNome(conta.getNome());
+		contaFutura.setValor(conta.getValor());
+		contaFutura.setDataPagamento(conta.getDataPagamento().plusMonths(plusMonth));
+		contaFutura.setEstado(conta.isEstado());
+		contaFutura.setRepetir(conta.isRepetir());
+		contaFutura.setTipoConta(conta.getTipoConta());
+		contaFutura.setChaveGrupoContas(conta.getChaveGrupoContas()); 
+		return contaFutura;
+	}
+    
 	@Override
 	public String toString() {
 		return String.format("ID: %d Nome: %s", this.id, this.nome);
